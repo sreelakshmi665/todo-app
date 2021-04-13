@@ -77,7 +77,7 @@ pipeline{
                    bat "docker login -u sreelakshmi14 -p ${dockerpwd}"
 
                 }
-                bat "docker commit todo_app sreelakshmi14/todo-app:latest"
+                bat "docker tag todo_app sreelakshmi14/todo-app:latest"
                 bat "docker push sreelakshmi14/todo-app:latest"
 
             }
