@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('Fetch project from github'){
             steps{
-                git branch: 'master', url: 'https://github.com/sujjadshaik/todo-app.git'
+                git branch: 'master', url: 'https://github.com/sreelakshmi665/todo-app.git'
             }
                 
         }
@@ -19,7 +19,7 @@ pipeline{
         }
         stage('sonar analysis'){
             steps{
-                withSonarQubeEnv('sonarQube'){
+                withSonarQubeEnv('sonar-server'){
                     bat 'mvn -f app/pom.xml sonar:sonar'
                 }
             }
@@ -27,7 +27,7 @@ pipeline{
         stage('deploy to artifactor'){
             steps{
                 rtUpload (
-            serverId: 'ARTIFACTORY-SERVER',
+            serverId: 'artifactory-server',
             spec: '''{
                  "files": [
                              {
